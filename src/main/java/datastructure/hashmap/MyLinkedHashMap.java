@@ -15,12 +15,13 @@ public class MyLinkedHashMap<K extends Comparable<K>, V extends Comparable<V>> {
 			this.myBucketArray.add(null);
 		}
 	}
+	
 	private int getBucketIndex(K key) {
 		int hashCode = Math.abs(key.hashCode());
 		int index = hashCode%numBuckets;
-		System.out.println("Key: "+key+ ". Hashcode: "+hashCode+". Index: "+index);
 		return index;
 	}
+	
 	public V get(K key) {
 		int index = this.getBucketIndex(key);
 		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
@@ -29,6 +30,7 @@ public class MyLinkedHashMap<K extends Comparable<K>, V extends Comparable<V>> {
 		MyMapNode<K,V> myMapNode = (MyMapNode<K,V>) myLinkedList.search(key);
 		return (myMapNode==null)?null:myMapNode.getValue();
 	}
+	
 	public void add(K key, V value) {
 		int index = this.getBucketIndex(key);
 		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
@@ -43,6 +45,13 @@ public class MyLinkedHashMap<K extends Comparable<K>, V extends Comparable<V>> {
 		}
 		else 
 			myMapNode.setValue(value);
+	}
+	
+	public MyMapNode<K, V> remove(K key) {
+		int index = this.getBucketIndex(key);
+		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
+		MyMapNode<K,V> myMapNode = (MyMapNode<K,V>) myLinkedList.searchAndRemove(key);
+		return (myMapNode==null)?null:myMapNode;
 	}
 	
 	@Override
