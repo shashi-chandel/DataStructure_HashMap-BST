@@ -13,22 +13,18 @@ public class MyMapNode<K extends Comparable<K>, V extends Comparable<V>> impleme
 		next = null;
 	}
 
-	@Override
 	public K getKey() {
 		return key;
 	}
 
-	@Override
 	public void setKey(K key) {
 		this.key = key;
 	}
 
-	@Override
 	public INode getNext() {
 		return next;
 	}
 
-	@Override
 	public void setNext(INode next) {
 		this.next = (MyMapNode<K, V>) next;
 	}

@@ -21,7 +21,6 @@ public class MyNode<K extends Comparable<K>> implements INode<K> {
 		return next;
 	}
 	
-	@Override
 	public void setNext(INode next) {
 		this.next =(MyNode<K>) next;
 	}
